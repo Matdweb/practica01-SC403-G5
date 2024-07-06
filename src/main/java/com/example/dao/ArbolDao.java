@@ -4,7 +4,7 @@
  */
 
 package com.example.dao;
-import com.tienda.domain.Categoria;
+import com.example.domain.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 /**
  *
