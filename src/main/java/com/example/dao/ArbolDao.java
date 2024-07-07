@@ -4,12 +4,16 @@
  */
 
 package com.example.dao;
-import com.tienda.domain.Categoria;
+import com.example.domain.Arbol;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Lenovo
  */
-public interface ArbolDao extends JpaRespository <Categoria, Long> {
-
+@Repository
+public interface ArbolDao extends JpaRepository<Arbol, Long> {
+    
 }

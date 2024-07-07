@@ -11,5 +11,5 @@ import java.util.List;
  * @author Lenovo
  */
 public interface ArbolService {
-public List<Arbol> getArbolData(boolean activos);
+    public List<Arbol> getArbolData(boolean activos);
 }

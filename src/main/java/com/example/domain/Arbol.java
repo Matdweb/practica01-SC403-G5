@@ -4,6 +4,7 @@
  */
 
 package com.example.domain;
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
@@ -12,17 +13,27 @@ import lombok.Data;
 @Entity
 @Table (name="arbol")
 public class Arbol implements Serializable {
-    private static final int serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_arbol")
 
-    private int id_arbol;
-    private String nombre_comun;
-    private String nombre_cientifico;
-    private String ruta_imagen;
-    private String tipo_flor;
-    private int dureza_madera;
-    private float altura_promedio;
+    private static final long serialVersionUID = 1L;
+
+    private Long idArbol;
+    private String nombreComun;
+    private String nombreCientifico;
+    private String rutaImagen;
+    private String tipoFlor;
+    private int durezaMadera;
+    private float alturaPromedio;
+    private boolean activo;
+    
+    public Arbol(){
+        
+    }
+    public boolean isActivo() {
+        return activo;
+    }
+    
 }
