@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FirebaseStorageImpl implements FirebaseStorage {
-    @Override
+    //@Override
     public String cargaImagen(MultipartFile archivoLocalCliente, String carpeta, Long id) {
         try {
             // El nombre original del archivo local del cliene

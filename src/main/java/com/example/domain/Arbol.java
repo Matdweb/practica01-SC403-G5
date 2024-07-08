@@ -14,11 +14,11 @@ import lombok.Data;
 @Table (name="arbol")
 public class Arbol implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_arbol")
-
-    private static final long serialVersionUID = 1L;
 
     private Long idArbol;
     private String nombreComun;
@@ -27,13 +27,9 @@ public class Arbol implements Serializable {
     private String tipoFlor;
     private int durezaMadera;
     private float alturaPromedio;
-    private boolean activo;
     
     public Arbol(){
         
-    }
-    public boolean isActivo() {
-        return activo;
     }
     
 }

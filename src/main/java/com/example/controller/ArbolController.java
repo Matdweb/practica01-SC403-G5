@@ -61,7 +61,6 @@ public class ArbolController {
             arbolExistente.setTipoFlor(arbol.getTipoFlor());
             arbolExistente.setDurezaMadera(arbol.getDurezaMadera());
             arbolExistente.setAlturaPromedio(arbol.getAlturaPromedio());
-            arbolExistente.setActivo(arbol.isActivo());
             
             arbolService.save(arbolExistente);
         }
