@@ -31,4 +31,23 @@ public class ArbolServiceImpl implements ArbolService {
         }
         return lista;
     }
+
+
+     @Override
+    @Transactional(readOnly=true)
+    public Arbol getArbol(Arbol arbol) {
+    return arbolDao.findById(arbol.getIdArbol()).orElse(null);
+    }
+    @Override
+    @Transactional
+    public Arbol save(Arbol arbol) {
+       return arbolDao.save(arbol); 
+    }
+    
+    @Override
+    @Transactional
+    public void delete(Arbol arbol){
+        arbolDao.delete(arbol);
+    }
+
 }

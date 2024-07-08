@@ -32,4 +32,34 @@ public class ArbolController {
     return "/arbol/listado";
     
     }
+
+    @GetMapping("/nuevo")
+    public String arbolNuevo(Arbol arbol) {
+        return "/arbol/modifica";
+    }
+
+    @GetMapping("/eliminar/{idArbol}")
+    public String arbolEliminar(Arbol arbol) {
+        arbolService.delete(arbol);
+        return "redirect:/arbol/listado";
+    }
+
+    
+   @PostMapping("/actualizar")
+    public String arbolActualizar(Arbol arbol) {
+        Arbol arbolExistente = arbolService.getArbol(arbol);
+        if (arbolExistente != null) {
+            
+            arbolExistente.setNombreComun(arbol.getNombreComun());
+            arbolExistente.setNombreCientifico(arbol.getNombreCientifico());
+            arbolExistente.setRutaImagen(arbol.getRutaImagen());
+            arbolExistente.setTipoFlor(arbol.getTipoFlor());
+            arbolExistente.setDurezaMadera(arbol.getDurezaMadera());
+            arbolExistente.setAlturaPromedio(arbol.getAlturaPromedio());
+            arbolExistente.setActivo(arbol.isActivo());
+            
+            arbolService.save(arbolExistente);
+        }
+        return "redirect:/arbol/listado";
+    }
 }
