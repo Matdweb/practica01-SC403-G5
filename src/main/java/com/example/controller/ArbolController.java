@@ -5,13 +5,18 @@
 
 package com.example.controller;
 
+import com.example.domain.Arbol;
 import lombok.extern.slf4j.Slf4j;
 import com.example.service.ArbolService;
+import com.example.service.impl.FirebaseStorageImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 /**
  *
  * @author Lenovo
@@ -62,4 +67,30 @@ public class ArbolController {
         }
         return "redirect:/arbol/listado";
     }
+    
+    @Autowired
+private FirebaseStorageImpl firebaseStorageService;
+    
+    @PostMapping (" /guardarImagen")
+    public String arbolGuardarImagen (Arbol arbol,
+    @RequestParam("imagenFile") MultipartFile imagenFile){
+    if (!imagenFile.isEmpty()) {
+    arbolService.save (arbol);
+    arbol.setRutaImagen (
+    firebaseStorageService. cargaImagen (
+    imagenFile,
+    "arbol", arbol.getIdArbol()));
+    }
+            arbolService.save(arbol);
+            return "redirect:/arbol/listado";
+    
+    }
+
+        @GetMapping("/eliminar/imagen/{idArbol}")
+    public String arbolEliminarImagen(Arbol arbol) {
+        arbolService.delete(arbol);
+        return "redirect:/arbol/listado";
+    }
+
+    
 }
